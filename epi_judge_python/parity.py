@@ -6,11 +6,14 @@ def parity(x: int) -> int:
             - 1 is  is the number of ones is odd
             - 0 otherwise
     """
-    result = 0
-    while x :
-        result ^= 1
-        x &= x - 1
-    return result
+    x ^= x >> 32
+    x ^= x >> 16
+    x ^= x >> 8
+    x ^= x >> 4
+    x ^= x >> 2
+    x ^= x >> 1
+
+    return x & 1
 
 
 if __name__ == '__main__':
